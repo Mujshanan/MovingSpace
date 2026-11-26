@@ -3,12 +3,31 @@
 ## Purpose and status
 
 This document defines the verification obligations for the first research
-implementation. It is a test specification, not a claim that the tests or
-the underlying results have already been implemented or passed.
+implementation. It is a test specification, not a claim that every listed
+test or underlying result has already been implemented or passed.
 
 Each theorem or estimator is to be translated into: (i) assumptions,
 (ii) computable inputs, (iii) an exact or reference quantity,
 (iv) an executable check, and (v) a stated tolerance or acceptance rule.
+
+## Current executable coverage
+
+The initial test oracle in
+tests/test_moving_galerkin_directional.py covers a finite-dimensional affine
+Galerkin problem with parameter-dependent operator, load, lift, and trial
+basis. It currently checks:
+
+- the differentiated discrete Galerkin equation against central
+  finite differences;
+- that omitting the lift derivative produces a detectable error;
+- that omitting trial-space motion changes the directional sensitivity;
+- invariance of the state and sensitivity under a nonsingular,
+  parameter-dependent basis transformation.
+
+These tests verify the algebraic discrete sensitivity implementation used
+inside the test oracle. They do not yet establish the research moving-space
+error theorem, the support/lift baseline-error leakage identity, the
+orthogonal fixed-space proxy theorem, or any a posteriori bound.
 
 ## Verification levels
 
@@ -144,7 +163,7 @@ Each theorem or estimator is to be translated into: (i) assumptions,
 ## Initial release gate
 
 The first public research release must not claim theorem verification merely
-because the package imports or the smoke test passes. Before any mathematical
-module is described as verified, its corresponding V1/V2 tests must pass.
-Before an estimator is called certified, V4 must pass under the theorem's
-explicit assumptions. Refinement claims require V5 evidence.
+because the package imports or the algebraic smoke tests pass. Before any
+mathematical module is described as verified, its corresponding V1/V2 tests
+must pass. Before an estimator is called certified, V4 must pass under the
+theorem's explicit assumptions. Refinement claims require V5 evidence.
