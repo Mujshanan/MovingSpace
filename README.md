@@ -5,9 +5,10 @@ sensitivity reliability in parameter-dependent Galerkin spaces, with a focus
 on geometry-driven structural mechanics.
 
 > **Status: early research scaffold.** The package structure, scope, and
-> verification plan are being established. The mathematical sensitivity
-> identities, estimators, and certification procedures are not yet implemented
-> or validated.
+> verification plan are established. A first finite-dimensional moving-Galerkin
+> derivative oracle is included in the test suite. The research sensitivity
+> error identities, a posteriori estimators, and certification procedures are
+> not yet implemented or validated.
 
 ## Research objective
 
@@ -45,8 +46,8 @@ adapters after the mathematical interfaces are verified.
 | Python package scaffold | Initial |
 | Research scope and architecture | Drafted |
 | Verification specification | Drafted |
-| Mathematical reference implementation | Not yet implemented |
-| Sensitivity identities and tests | Not yet implemented |
+| Finite-dimensional moving-Galerkin derivative oracle | Initial test reference |
+| Research sensitivity-error identities | Not yet implemented |
 | A posteriori estimator and certification | Not yet implemented |
 | FEM adapters and benchmarks | Deferred |
 
@@ -80,8 +81,9 @@ moving-subspace identities, support/lift kinematics, the fixed-space
 sensitivity proxy, finite-difference step-size sweeps, estimator bounds,
 directional ray-fidelity checks, and trial-space refinement.
 
-A passing package-import test is only a software smoke test. It is not evidence
-that a theorem or estimator has been verified.
+The current algebraic tests are reference checks for the differentiated
+discrete Galerkin equations. They are not yet verification of the full
+research theorems or any certified estimator.
 
 ## License
 
