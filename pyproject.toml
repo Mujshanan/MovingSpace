@@ -8,7 +8,6 @@ version = "0.1.0.dev0"
 description = "Research tools for sensitivity analysis in parameter-dependent Galerkin spaces."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "License not yet selected; this repository is currently private." }
 authors = [{ name = "Mujtaba Shanan" }]
 dependencies = ["numpy>=1.26"]
 
