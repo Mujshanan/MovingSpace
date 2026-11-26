@@ -12,22 +12,28 @@ Each theorem or estimator is to be translated into: (i) assumptions,
 
 ## Current executable coverage
 
-The initial test oracle in
-tests/test_moving_galerkin_directional.py covers a finite-dimensional affine
-Galerkin problem with parameter-dependent operator, load, lift, and trial
-basis. It currently checks:
+The initial test oracles currently cover two deliberately separate
+finite-dimensional problems:
 
-- the differentiated discrete Galerkin equation against central
-  finite differences;
-- that omitting the lift derivative produces a detectable error;
-- that omitting trial-space motion changes the directional sensitivity;
-- invariance of the state and sensitivity under a nonsingular,
-  parameter-dependent basis transformation.
+1. `tests/test_moving_galerkin_directional.py` checks a parameter-dependent
+   affine Galerkin problem with operator, load, lift, and trial basis. It
+   checks the differentiated discrete Galerkin equations against central
+   finite differences, detects omitted lift and trial-space motion terms,
+   and checks invariance under a nonsingular parameter-dependent basis
+   transformation.
+2. `tests/test_moving_subspace_kinematics.py` checks Euclidean orthogonal
+   projector kinematics for a genuinely moving subspace. It checks the
+   analytic projector derivative against a central-difference sweep,
+   differentiated projector constraints, gauge invariance of normal
+   subspace velocity, zero normal velocity for pure basis-gauge motion, and
+   the normal component of the derivative of the projection error.
 
-These tests verify the algebraic discrete sensitivity implementation used
-inside the test oracle. They do not yet establish the research moving-space
-error theorem, the support/lift baseline-error leakage identity, the
-orthogonal fixed-space proxy theorem, or any a posteriori bound.
+These are algebraic verification oracles, not public API implementations.
+The second oracle uses the Euclidean inner product; it is not yet the
+mechanical energy-orthogonal projector used in the variational theory.
+Neither oracle alone establishes the complete moving-space sensitivity-error
+theorem, the support/lift baseline-error leakage theorem, the orthogonal
+fixed-space proxy theorem, or any a posteriori estimator or certified bound.
 
 ## Verification levels
 
@@ -56,6 +62,8 @@ orthogonal fixed-space proxy theorem, or any a posteriori bound.
   control case.
 - Compare both sides of the exact identity using independently computed
   state, projector, and directional subspace-motion data.
+- Verify projector kinematics independently of the mechanical Galerkin
+  sensitivity oracle.
 
 **Acceptance**
 - Algebraic residual is at the scale predicted by floating-point conditioning.
@@ -63,6 +71,8 @@ orthogonal fixed-space proxy theorem, or any a posteriori bound.
   deliberately omitted.
 - Results must be invariant under a nonsingular change of basis spanning the
   same trial subspace.
+- Distinguish Euclidean projector checks from energy-orthogonal mechanical
+  projection checks.
 
 ### 2. Support/lift kinematics and baseline-error leakage
 
