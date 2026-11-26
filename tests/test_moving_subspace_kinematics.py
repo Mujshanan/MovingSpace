@@ -128,7 +128,6 @@ def test_normal_error_derivative_identity_with_nonzero_normal_velocity() -> None
     y = y0 + theta * y1 + theta**2 * y2
     y_dot = y1 + 2.0 * theta * y2
 
-    error = (identity - p) @ y
     error_dot = -p_dot @ y + (identity - p) @ y_dot
     left = (identity - p) @ error_dot
     right = (identity - p) @ y_dot - _normal_velocity(p, p_dot) @ y
