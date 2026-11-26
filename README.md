@@ -6,9 +6,10 @@ on geometry-driven structural mechanics.
 
 > **Status: early research scaffold.** The package structure, scope, and
 > verification plan are established. A first finite-dimensional moving-Galerkin
-> derivative oracle is included in the test suite. The research sensitivity
-> error identities, a posteriori estimators, and certification procedures are
-> not yet implemented or validated.
+> derivative oracle is included in the test suite. The PEDAT-V04A closure-based
+> sensitivity-error theorem is now documented analytically; its software
+> implementation, benchmark execution, and estimator certification remain
+> pending.
 
 ## Research objective
 
@@ -47,8 +48,9 @@ adapters after the mathematical interfaces are verified.
 | Research scope and architecture | Drafted |
 | Verification specification | Drafted |
 | Finite-dimensional moving-Galerkin derivative oracle | Initial test reference |
-| Research sensitivity-error identities | Not yet implemented |
-| A posteriori estimator and certification | Not yet implemented |
+| PEDAT-V04A closure-based sensitivity-error theorem | Analytically documented; software implementation pending |
+| Moving-domain scalar-diffusion specialization | Analytically documented; numerical benchmark pending |
+| A posteriori estimator and certification | Not yet implemented or validated |
 | FEM adapters and benchmarks | Deferred |
 
 ## Installation
@@ -93,6 +95,7 @@ ruff check .
 - [Research scope](docs/RESEARCH_SCOPE.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Verification specification](docs/VERIFICATION_SPECIFICATION.md)
+- [PEDAT-V04A closure theorem and moving-domain specialization](docs/PEDAT_V04A_CLOSURE_THEOREM.md)
 
 ## Verification-first policy
 
@@ -104,7 +107,10 @@ directional ray-fidelity checks, and trial-space refinement.
 
 The current algebraic tests are reference checks for the differentiated
 discrete Galerkin equations. They are not yet verification of the full
-research theorems or any certified estimator.
+research theorems or any certified estimator. The newly documented PEDAT
+theorem is a mathematical result under explicit assumptions; it does not
+mean that its benchmark, software implementation, or estimators have passed
+verification.
 
 ## License and reuse
 
