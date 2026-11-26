@@ -51,14 +51,35 @@ adapters after the mathematical interfaces are verified.
 | A posteriori estimator and certification | Not yet implemented |
 | FEM adapters and benchmarks | Deferred |
 
-## Install for development
+## Installation
 
 Python 3.11 or newer is required.
+
+Install the current public verification branch:
+
+```bash
+python -m pip install "git+https://github.com/Mujshanan/MovingSpace.git@foundation/verification-first"
+```
+
+For development and verification tools:
+
+```bash
+python -m pip install "movingspace[dev] @ git+https://github.com/Mujshanan/MovingSpace.git@foundation/verification-first"
+```
+
+Then import the package:
+
+```python
+import movingspace
+print(movingspace.__version__)
+```
+
+For a local development checkout:
 
 ```bash
 python -m venv .venv
 # Windows:
-.venv\Scripts\activate
+.venv\\Scripts\\activate
 # Linux/macOS:
 source .venv/bin/activate
 
@@ -85,7 +106,9 @@ The current algebraic tests are reference checks for the differentiated
 discrete Galerkin equations. They are not yet verification of the full
 research theorems or any certified estimator.
 
-## License
+## License and reuse
 
-The project license has not yet been selected. This repository is currently
-private; no public reuse or redistribution terms are asserted at this stage.
+The repository is publicly visible, but no open-source license has been
+selected. Public visibility alone does not grant permission to redistribute,
+modify, or reuse the code. A license will be added after the project’s
+licensing terms are decided.
